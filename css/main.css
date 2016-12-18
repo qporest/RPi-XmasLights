@@ -1,0 +1,128 @@
+body {
+	height: auto;
+	position: relative;
+}
+.columns {
+	position: relative;
+}
+.centered {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+.tabs {
+	height: 40px;
+	box-sizing: border-box;
+}
+.tabs a {
+	height: 36px;
+	box-sizing: border-box;
+	padding: 0 !important;
+	line-height: 36px;
+	font-size: 24px !important;
+	outline: 0;
+}
+.tabs .tab-title {
+	text-align: center;
+	float: left;
+	width: 50%;
+	height: 40px;
+	box-sizing: border-box;
+	border-bottom: 4px solid transparent;
+	transition: background 0.3s, border-bottom 0.3s;
+}
+.tabs .tab-title.active {
+	background: white;
+	border-bottom: 4px solid #3939E2;
+}
+.tabs .tab-title:hover {
+	background: #ccc;
+}
+.tabs-content {
+	z-index: 2;
+	min-height: calc(100vh - 60px);
+	background: white;
+}
+
+.card {
+	margin: 10px 5px 5px 5px;
+	max-width: 25rem;
+	width: 70%;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.2),
+	0 5px 5px rgba(0,0,0,0.25);
+	position: relative;
+	display: block;
+	transition: all 1s;
+}
+.card:hover {
+	cursor: pointer;
+	box-shadow: 0 16px 32px rgba(0,0,0,0.2),
+	0 10px 10px rgba(0,0,0,0.25);
+}
+.card .title {
+	padding: 5px;
+	font-size: 1.6em;
+	background: #5C90D1;
+	color: white;
+	text-align: center;
+	border-bottom: 2px solid #888;
+}
+.card .thumbnail {
+	background: black;
+}
+.card .thumbnail img {
+	opacity: 0.3;
+	width: 100%;
+	transition: opacity 0.3s;
+}
+.card a:before {
+	display: none;
+}
+.card .thumbnail img:hover {
+	opacity: 1;
+	outline: 0;
+}
+.card .text {
+	font-size: 1em;
+	text-align: center;
+	background: white;
+	padding: 20px 0;
+}
+.toggle .text {
+	font-size: 2em;
+	font-weight: bold;
+	transition: background 1s, color 1s;
+}
+.toggle:hover .text {
+	background: #aaa;
+	color: white;
+}
+a, a:hover, a:active {
+	position: relative;
+	text-decoration: none;
+	color: inherit;
+}
+.tabs-content a:before {
+	content: "";
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: black;	
+	transition: width 0.3s;
+}
+.tabs-content a:hover:before {
+	width: 100%;
+}
+.dashboard {
+	align-items:  flex-start;
+	max-width: 60em;
+	margin: auto auto;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}

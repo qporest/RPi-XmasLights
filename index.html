@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qporest</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+  <div class="nav">
+    <div class="row">
+      <div class="columns small-12 large-8 large-centered">
+        <ul class="tabs" data-tab>
+          <li class="tab-title active"><a href="#music">Music</a></li>
+          <li class="tab-title"><a href="#individual">Inividual lights</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tabs-content">
+      <div class="content active" id="music">
+        <div class="dashboard">
+            
+        </div>   
+      </div> 
+      <div class="content" id="individual"> 
+        <div class="dashboard">
+          <div class="card command" command="all_on">
+              <div class="title">All on</div>
+          </div>
+          <div class="card command" command="all_off">
+              <div class="title">All off</div>
+          </div>
+        </div>
+        <hr>
+        <div class="dashboard">
+          <div class="card toggle" component="relay/0" id="relay-0">
+              <div class="title">Relay #1</div>
+              <div class="thumbnail">
+                <!-- <a href="https://qporest.itch.io/ancient-cure"><img src="img/ancientcure.jpg"></a> -->
+              </div>
+              <div class="text">
+                On
+              </div>
+          </div>
+          <div class="card toggle" component="relay/1" id="relay-1">
+              <div class="title">Relay #2</div>
+              <div class="thumbnail">
+                <!-- <a href="https://qporest.itch.io/ancient-cure"><img src="img/ancientcure.jpg"></a> -->
+              </div>
+              <div class="text">
+                On
+              </div>
+          </div>
+          <div class="card toggle" component="relay/2" id="relay-2">
+              <div class="title">Relay #3</div>
+              <div class="thumbnail">
+                <!-- <a href="https://qporest.itch.io/ancient-cure"><img src="img/ancientcure.jpg"></a> -->
+              </div>
+              <div class="text">
+                On
+              </div>
+          </div>
+          <div class="card toggle" component="relay/3" id="relay-3">
+              <div class="title">Relay #4</div>
+              <div class="thumbnail">
+                <!-- <a href="https://qporest.itch.io/ancient-cure"><img src="img/ancientcure.jpg"></a> -->
+              </div>
+              <div class="text">
+                On
+              </div>
+          </div>
+          <div class="card toggle" component="relay/4" id="relay-4">
+              <div class="title">Relay #5</div>
+              <div class="thumbnail">
+                <!-- <a href="https://qporest.itch.io/ancient-cure"><img src="img/ancientcure.jpg"></a> -->
+              </div>
+              <div class="text">
+                On
+              </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      $(document).foundation({
+          tab: {
+            callback : function () {
+            }
+          }
+        });
+    </script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
