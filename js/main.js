@@ -29,16 +29,6 @@ $(document).ready(function(){
 		});
 	});
 
-	$(".song").click(function(){
-		$.post(base_url+"update", JSON.stringify({
-			'value': "play", 
-			"parameter": $(this).attr("command"),
-			'command': 'relays'
-		}), function(data){
-			data = JSON.parse(data);
-			update();
-		});
-	});
 });
 
 function init(){
@@ -52,14 +42,24 @@ function loadMusicList(){
 			data = JSON.parse(data);
 			console.log(data);
 			var text;
-			for(var i in data['list']){
-				if(data['relay'].hasOwnProperty(i)){
+			for(var i=0;i<data['list'].length; i++){
 					text = "<div class='card song'>"+
-						"<div class='title' song=\""+i+"\">"+i+"</div>"+
+						"<div class='title' song=\""+data['list'][i]+"\">"+data['list'][i]+"</div>"+
 						"</div>";
 					$("#musicList").append($("<div/>").html(text).contents());
-				}
+				
 			}
+			 $(".song").click(function(){
+                $.post(base_url+"update", JSON.stringify({
+                        'value': "play",
+                        "parameter": $(this).attr("command"),
+                        'command': 'relays'
+                }), function(data){
+                        data = JSON.parse(data);
+                        update();
+                });
+        });
+
 		}
 	);
 

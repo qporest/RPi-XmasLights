@@ -9,6 +9,9 @@ import RPi.GPIO as GPIO
 import subprocess
 import glob
 
+music_list = glob.glob('/home/pi/music/*.mp3')+glob.glob('/home/pi/music/*.wav')
+for i in range(len(music_list)):
+	music_list[i] = music_list[i].split('/')[-1]
 relaySequence = ['11','12','16','36','38']
 relays = {
 	'11': False,
@@ -111,12 +114,8 @@ def get_queue():
 
 @get('/getMusic')
 def get_queue():
-	response = {'list':{}}
-	temp = glob.glob('/home/pi/music/*.mp3')+glob.glob('/home/pi/music/*.wav')
-	files = []
-	for i in temp:
-		files.append(temp.split('/')[-1])
-	response['list'] = files
+	response = {'list':[]}
+	response['list'] = music_list
 	return json.dumps(response)
 
 @route('/css/<filename>')
