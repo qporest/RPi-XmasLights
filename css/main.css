@@ -95,7 +95,7 @@ body {
 	transition: background 1s, color 1s;
 }
 .toggle:hover .text {
-	background: #aaa;
+	background: #444;
 	color: white;
 }
 a, a:hover, a:active {
@@ -125,4 +125,16 @@ a, a:hover, a:active {
 	height: 100%;
 	justify-content: space-around;
 	flex-wrap: wrap;
+}
+.song  {
+	margin:  0px;
+	max-width: 50rem;
+}
+.song .title {
+	padding: 2px;
+	transition: background 1s, color 1s;
+}
+.song:hover .title {
+	background: #20379C;
+	color: white;
 }

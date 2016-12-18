@@ -28,12 +28,43 @@ $(document).ready(function(){
 			update();
 		});
 	});
+
+	$(".song").click(function(){
+		$.post(base_url+"update", JSON.stringify({
+			'value': "play", 
+			"parameter": $(this).attr("command"),
+			'command': 'relays'
+		}), function(data){
+			data = JSON.parse(data);
+			update();
+		});
+	});
 });
 
 function init(){
+	loadMusicList();
 	update();
 }
 
+function loadMusicList(){
+	$.get(base_url+"getMusic", 
+		function(data){
+			data = JSON.parse(data);
+			console.log(data);
+			var text;
+			for(var i in data['list']){
+				if(data['relay'].hasOwnProperty(i)){
+					text = "<div class='card song'>"+
+						"<div class='title' song=\""+i+"\">"+i+"</div>"+
+						"</div>";
+					$("#musicList").append($("<div/>").html(text).contents());
+				}
+			}
+		}
+	);
+
+
+}
 //loads all the envviromental variables
 function update(){
 	$.get(base_url+"status", 

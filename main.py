@@ -6,6 +6,8 @@ import threading
 from Queue import Queue, Empty
 import time
 import RPi.GPIO as GPIO
+import subprocess
+import glob
 
 relaySequence = ['11','12','16','36','38']
 relays = {
@@ -15,6 +17,7 @@ relays = {
 	'36': False,
 	'38': False
 }
+process = None
 
 def updateRelay(num, value):
 	"""Updates separate relays with inverted values"""
@@ -104,6 +107,16 @@ def get_queue():
 	response = {'relay':{}}
 	for i in range(len(relaySequence)):
 		response['relay'][i] = relays[relaySequence[i]]
+	return json.dumps(response)
+
+@get('/getMusic')
+def get_queue():
+	response = {'list':{}}
+	temp = glob.glob('/home/pi/music/*.mp3')+glob.glob('/home/pi/music/*.wav')
+	files = []
+	for i in temp:
+		files.append(temp.split('/')[-1])
+	response['list'] = files
 	return json.dumps(response)
 
 @route('/css/<filename>')
