@@ -49,16 +49,15 @@ function loadMusicList(){
 					$("#musicList").append($("<div/>").html(text).contents());
 				
 			}
-			 $(".song").click(function(){
+			$(".song").click(function(){
                 $.post(base_url+"update", JSON.stringify({
-                        'value': "play",
-                        "parameter": $(this).attr("command"),
-                        'command': 'relays'
+                        "value": $(this).attr("song"),
+                        'command': 'music'
                 }), function(data){
                         data = JSON.parse(data);
                         update();
-                });
-        });
+           		});
+        	});
 
 		}
 	);

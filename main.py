@@ -8,6 +8,7 @@ import time
 import RPi.GPIO as GPIO
 import subprocess
 import glob
+import os.path
 
 music_list = glob.glob('/home/pi/music/*.mp3')+glob.glob('/home/pi/music/*.wav')
 for i in range(len(music_list)):
@@ -24,6 +25,10 @@ process = None
 
 def updateRelay(num, value):
 	"""Updates separate relays with inverted values"""
+	#check is music is running, if so kill it and turn off all relays
+	if process.poll() is not None:
+		process.terminate()
+		updateRelayBoard([False]*len(relaySequence))
 	GPIO.output(int(relaySequence[num]), int(not value))
 	relays[relaySequence[num]] = value
 
@@ -85,6 +90,12 @@ def update_led():
 			updateRelayBoard(value['parameter'])
 		else:
 			print("Unexpected value for command RELAYS: "+str(value['value']))
+	elif value['command'] == 'music':
+		if(os.path.isfile(value['value'])):
+			global process
+			process = subprocess.Popen('sudo python /home/pi/music/lightshow/py/synchronized_lights.py --file=/home/pi/music/'+value['value'],stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+		else:
+			print('[Unknown file '+value['command']+']')
 	return json.dumps(response)
 @post('/component')
 def update_component():
