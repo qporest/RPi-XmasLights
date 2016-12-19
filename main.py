@@ -25,14 +25,18 @@ relays = {
 }
 process = None
 
+def stop_music(pid):
+	os.system('sudo kill '+str(pid))
+	process = None
+	updateRelayBoard([False]*len(relaySequence))
+
 def updateRelay(num, value):
 	"""Updates separate relays with inverted values"""
 	#check is music is running, if so kill it and turn off all relays
 	global process
 	if process is not None:	
 		if process.poll() is None:
-			process.terminate()
-			updateRelayBoard([False]*len(relaySequence))	
+			stop_music(process.pid)	
 	GPIO.output(int(relaySequence[num]), int(value))
 	relays[relaySequence[num]] = value
 
@@ -95,7 +99,6 @@ def update():
 		else:
 			print("Unexpected value for command RELAYS: "+str(value['value']))
 	elif value['command'] == 'music':
-		print(value)
 		if(os.path.isfile(value['value'])):
 			global process
 			process = subprocess.Popen('python /home/pi/music/lightshowpi/py/synchronized_lights.py --file=/home/pi/music/'+value['value'],stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
