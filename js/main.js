@@ -43,8 +43,8 @@ function loadMusicList(){
 			console.log(data);
 			var text;
 			for(var i=0;i<data['list'].length; i++){
-					text = "<div class='card song'>"+
-						"<div class='title' song=\""+data['list'][i]+"\">"+data['list'][i]+"</div>"+
+					text = "<div class='card song' song=\""+data['list'][i]+"\">"+
+						"<div class='title'>"+data['list'][i]+"</div>"+
 						"</div>";
 					$("#musicList").append($("<div/>").html(text).contents());
 				
