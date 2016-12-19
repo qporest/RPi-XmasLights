@@ -12,9 +12,9 @@ $(document).ready(function(){
 			console.log(data);	
 			data = JSON.parse(data);
 			if(data["state"]){
-				$(self).children(".text").text("On");
+				$(self).children(".text").text('<i class="fa fa-lightbulb-o on" aria-hidden="true"></i>');
 			} else {
-				$(self).children(".text").text("Off");
+				$(self).children(".text").text('<i class="fa fa-lightbulb-o off" aria-hidden="true"></i>');
 			}
 		});
 	});
@@ -73,9 +73,9 @@ function update(){
 		for(var i in data['relay']){
 			if(data['relay'].hasOwnProperty(i)){
 				if(data['relay'][i]){
-					$('#relay-'+i).children(".text").text("On");
+					$('#relay-'+i).children(".text").text('<i class="fa fa-lightbulb-o on" aria-hidden="true"></i>');
 				} else {
-					$('#relay-'+i).children(".text").text("Off");
+					$('#relay-'+i).children(".text").text('<i class="fa fa-lightbulb-o off" aria-hidden="true"></i>');
 				}
 			}
 		}

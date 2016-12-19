@@ -138,3 +138,11 @@ a, a:hover, a:active {
 	background: #20379C;
 	color: white;
 }
+
+.on {
+	color: #FF5722;
+}
+
+.off {
+	color: #607D8B;
+}
