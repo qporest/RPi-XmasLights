@@ -26,7 +26,8 @@ relays = {
 process = None
 
 def stop_music(pid):
-	os.system('sudo kill '+str(pid))
+	print('Stopping '+str(pid))
+	os.killpg(os.getpgid(pid), signal.SIGTERM)
 	process = None
 	updateRelayBoard([False]*len(relaySequence))
 
@@ -101,7 +102,10 @@ def update():
 	elif value['command'] == 'music':
 		if(os.path.isfile(value['value'])):
 			global process
-			process = subprocess.Popen('python /home/pi/music/lightshowpi/py/synchronized_lights.py --file=/home/pi/music/'+value['value'],stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+			updateRelay(0, False)
+			#to make sure that prev. music is stopped		
+			process = subprocess.Popen('sudo python /home/pi/music/lightshowpi/py/synchronized_lights.py --file=/home/pi/music/"'+value['value']+'"',stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, preexec_fn=os.setsid)
+			print('Started process '+str(process.pid))
 		else:
 			print('[Unknown file '+value['command']+']')
 	return json.dumps(response)
