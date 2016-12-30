@@ -167,21 +167,25 @@ def server_static_js_vendor(filename):
 
 #all the routes related to the mirror
 @route('/mirror')
-def serve_index():
+def serve_mirror_index():
 	return static_file('index.html',root='/home/pi/music/magic mirror')
 
 @route('/mirror/css/<filename>')
-def server_static_css(filename):
+def server_mirror_static_css(filename):
     return static_file(filename, root='/home/pi/music/magic mirror/css')
 
 @route('/mirror/js/<filename>')
-def server_static_js(filename):
+def server_mirror_static_js(filename):
     return static_file(filename, root='/home/pi/music/magic mirror/js')
 
 @route('/mirror/font/<filename>')
-def server_static_img(filename):
+def server_mirror_static_img(filename):
     return static_file(filename, root='/home/pi/music/magic mirror/font')
 
+#serve manifest
+@route('/mirror/manifest.json')
+def serve_mirror_index():
+	return static_file('index.html',root='/home/pi/music/magic mirror/manifest.json')
 
 if __name__ == "__main__":
 	#i'm using this port just because I've already had settings for it
