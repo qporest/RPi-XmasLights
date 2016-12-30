@@ -166,7 +166,7 @@ def server_static_js_vendor(filename):
     return static_file(filename, root='/home/pi/music/js/vendor')
 
 #all the routes related to the mirror
-@route('/mirror/')
+@route('/mirror')
 def serve_index():
 	return static_file('index.html',root='/home/pi/music/magic mirror')
 
