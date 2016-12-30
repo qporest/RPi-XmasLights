@@ -7,9 +7,11 @@ body > * {
 	padding: 0;
 	border: 0;
 	color: white;
+
 }
 
 .block {
+	font-family: 'Josefin Sans', sans-serif;
 	margin: auto auto;
 	margin-top: 25px;
 	position: relative;
