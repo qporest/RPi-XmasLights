@@ -185,7 +185,7 @@ def server_mirror_static_img(filename):
 #serve manifest
 @route('/mirror/manifest.json')
 def serve_mirror_index():
-	return static_file('index.html',root='/home/pi/music/magic mirror/manifest.json')
+	return static_file('manifest.json',root='/home/pi/music/magic mirror/')
 
 if __name__ == "__main__":
 	#i'm using this port just because I've already had settings for it
