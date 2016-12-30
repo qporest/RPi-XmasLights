@@ -1,0 +1,56 @@
+body {
+	background: #000;
+	position: relative;
+}
+
+body > * {
+	padding: 0;
+	border: 0;
+	color: white;
+}
+
+.block {
+	margin: auto auto;
+	margin-top: 25px;
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+#clock {
+	font-size: 15rem;
+}
+
+#date {
+	font-size: 6rem;
+}
+
+#weather {
+	display: block;
+	width: 100%;	
+	height: 30%;
+
+}
+
+#temperature {
+	font-size: 8rem;
+	width: 49%;
+	height: 30%;
+	display: inline-block;
+}
+
+#weatherIcon {
+	width: 49%;
+	display: inline-block;
+}
+#humidity {
+	font-size: 4rem;
+}
+#icon {
+	font-size: 12rem;
+}
+#quote {
+	margin-top: 30px;
+	font-size: 4rem;
+	font-style: italic;
+}

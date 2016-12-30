@@ -1,4 +1,5 @@
 var base_url = "http://192.168.0.25:12300/";
+//not sure if base url is actually needed
 
 $(document).ready(function(){
 	init();
@@ -31,6 +32,7 @@ $(document).ready(function(){
 
 });
 
+//called once to get the list of music and state of relays
 function init(){
 	loadMusicList();
 	update();
@@ -61,10 +63,9 @@ function loadMusicList(){
 
 		}
 	);
-
-
 }
-//loads all the envviromental variables
+
+//loads all the enviromental variables
 function update(){
 	$.get(base_url+"status", 
 	function(data){

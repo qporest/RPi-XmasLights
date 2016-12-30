@@ -114,7 +114,7 @@ def update():
 def update_component():
 	"""
 		Processes the action requested by the user regarding to a specific component 
-		Returns info relevant to the component
+		Returns info relevant to the component or an empty object.
 	"""
 	postdata = request.body.read()
 	value = json.loads(postdata)
@@ -130,14 +130,21 @@ def update_component():
 	return json.dumps(response)
 
 @get('/status')
-def get_queue():
+def get_status():
+	"""
+	Return json with status of whatever's connected.
+	I add dictionary of arrays.
+	"""
 	response = {'relay':{}}
 	for i in range(len(relaySequence)):
 		response['relay'][i] = relays[relaySequence[i]]
 	return json.dumps(response)
 
 @get('/getMusic')
-def get_queue():
+def get_music_list():
+	"""
+	Return a preloaded music list.
+	"""
 	response = {'list':[]}
 	response['list'] = music_list
 	return json.dumps(response)
@@ -145,14 +152,19 @@ def get_queue():
 @route('/css/<filename>')
 def server_static_css(filename):
     return static_file(filename, root='/home/pi/music/css')
+
 @route('/js/<filename>')
 def server_static_js(filename):
     return static_file(filename, root='/home/pi/music/js')
+
 @route('/img/<filename>')
 def server_static_img(filename):
     return static_file(filename, root='/home/pi/music/img')
+
 @route('/js/vendor/<filename>')
 def server_static_js_vendor(filename):
     return static_file(filename, root='/home/pi/music/js/vendor')
+
 if __name__ == "__main__":
+	#i'm using this port just because I've already had settings for it
 	run(host="0.0.0.0", port=12300)
