@@ -6,10 +6,29 @@ var api = "e0be9ef8e1f460d42415e76155d07b56";
 var base_url = "https://api.darksky.net/forecast/";
 
 function init(){
+	var goFS = document.getElementById("container");
+  	goFS.addEventListener("click", function() {
+		toggleFullScreen();
+  	}, false);
 	setTime();
 	setDate();
 	setWeather();
 	setQuote();
+}
+
+function toggleFullScreen() {
+  var doc = window.document;
+  var docEl = doc.documentElement;
+
+  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    requestFullScreen.call(docEl);
+  }
+  else {
+    cancelFullScreen.call(doc);
+  }
 }
 
 function setTime(){

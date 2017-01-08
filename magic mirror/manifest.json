@@ -1,6 +1,6 @@
 {
   "name": "Magic Mirror",
   "start_url": "/mirror",
-  "display": "fullscreen",
+  "display": "fulsreen",
   "orientation": "portrait"
 }
