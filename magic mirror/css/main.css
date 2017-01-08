@@ -3,6 +3,12 @@ body {
 	position: relative;
 }
 
+#container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
 body > * {
 	padding: 0;
 	border: 0;

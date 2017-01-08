@@ -5,13 +5,15 @@ var latitude = "40.001687", longtitude = "-83.151565";
 var api = "e0be9ef8e1f460d42415e76155d07b56";
 var base_url = "https://api.darksky.net/forecast/";
 
+var weatherUpdateTime = 1000*60*30;//every 30 mins
+var quoteUpdateTime = 1000*60*20;//every 20 mins
+
 function init(){
 	var goFS = document.getElementById("container");
   	goFS.addEventListener("click", function() {
 		toggleFullScreen();
   	}, false);
 	setTime();
-	setDate();
 	setWeather();
 	setQuote();
 }
@@ -33,7 +35,10 @@ function toggleFullScreen() {
 
 function setTime(){
 	var now = new Date();
-	$("#clock").text(now.getHours()+":"+now.getMinutes());
+	var hours = 
+	$("#clock").text((now.getHours()<10 ? "0" : "")+now.getHours()+":"+(now.getHours()===0 ? "00" : (now.getMinutes()<10 ? "0" : ""))+now.getMinutes());
+	setDate();
+	window.setTimeout(setTime, 100);
 }
 
 function setDate(){
@@ -69,6 +74,7 @@ function setWeather(){
 			$('#humidity').text('Humidity:'+data['currently']['humidity']*100+'%');
 		}
 	});
+	window.setTimeout(setWeather, weatherUpdateTime);
 }
 
 function setQuote(){
@@ -88,6 +94,7 @@ function setQuote(){
 	        $('#quote').text(data['quoteText']);
 	    }
 	});
+	window.setTimeout(setQuote, quoteUpdateTime);
 }
 function quoteSuccess(data){
 	console.log(data);
