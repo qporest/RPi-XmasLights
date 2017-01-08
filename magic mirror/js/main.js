@@ -38,7 +38,7 @@ function setTime(){
 	var hours = 
 	$("#clock").text((now.getHours()<10 ? "0" : "")+now.getHours()+":"+(now.getHours()===0 ? "00" : (now.getMinutes()<10 ? "0" : ""))+now.getMinutes());
 	setDate();
-	window.setTimeout(setTime, 100);
+	window.setTimeout(setTime, 300);
 }
 
 function setDate(){
