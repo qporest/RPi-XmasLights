@@ -71,7 +71,7 @@ function setWeather(){
 			}
 			icon += "\"></i>";
 			$('#icon').html(icon);
-			$('#humidity').text('Humidity:'+data['currently']['humidity']*100+'%');
+			$('#humidity').text('Humidity:'+String(data['currently']['humidity']*100).slice(0,5)+'%');
 		}
 	});
 	window.setTimeout(setWeather, weatherUpdateTime);
